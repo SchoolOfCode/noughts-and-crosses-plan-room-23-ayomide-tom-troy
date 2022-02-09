@@ -1,0 +1,16 @@
+.table {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
+  height: 25em;
+  width: auto;
+  margin-left: 2em;
+  border: solid black 2px;
+  margin-right: 2em;
+}
+
+tr {
+  border: 1px solid black;
+}
