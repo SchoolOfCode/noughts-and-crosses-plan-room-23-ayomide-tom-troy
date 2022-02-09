@@ -1,4 +1,5 @@
 import { useState } from "React";
+import Square from "../Square";
 
 function Game() {
   const [turn, setTurn] = useState("x");
@@ -22,4 +23,12 @@ function Game() {
     }
   };
 }
+
+function boardCheck(squares) {
+  for (let i = 0; i < squares.length; i++) {
+    if (squares[i] === null) return false;
+  }
+  return true;
+}
+
 export default Game;
