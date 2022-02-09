@@ -1,8 +1,12 @@
 import { useState } from "React";
-import Square from "../Square";
+
+function calculateWinner() {
+  console.log("hello");
+}
 
 function Game() {
-  const [turn, setTurn] = useState("x");
+  const [isXTurn, setIsXTurn] = useState(true);
+  const winner = calculateWinner(board);
   const [board, setBoard] = useState([
     null,
     null,
@@ -14,21 +18,19 @@ function Game() {
     null,
     null,
   ]);
+  const currentPlayer = isXTurn ? "X" : "O";
 
-  const handleClick = (value) => {
-    if (turn === "x") {
-      setTurn("o");
-    } else if (turn === "o") {
-      setTurn("x");
+  function handleClick(index) {
+    if (winner || board[index]) {
+      return;
     }
-  };
-}
 
-function boardCheck(squares) {
-  for (let i = 0; i < squares.length; i++) {
-    if (squares[i] === null) return false;
+    setBoard([
+      ...board.slice(0, index),
+      currentPlayer,
+      ...board.slice(index + 1),
+    ]);
   }
-  return true;
+  setIsXTurn(!isXTurn);
 }
-
 export default Game;
